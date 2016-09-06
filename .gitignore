@@ -49,6 +49,4 @@ Temporary Items
 
 #java target directories
 target
-/mylog/
-/src/main/java/org/savam/newsmanager/controller/WelcomeController.java
-/web/WEB-INF/spring/
+

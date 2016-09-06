@@ -23,6 +23,7 @@ public class NewsServiceImpl implements NewsService {
         this.articleDAO.addArticle(article);
     }
 
+    @Transactional
     public List<Article> listArticles() {
         return this.articleDAO.listArticles();
     }

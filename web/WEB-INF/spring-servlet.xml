@@ -12,15 +12,13 @@ http://www.springframework.org/schema/tx/spring-tx.xsd
 http://www.springframework.org/schema/mvc
 http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
+    <!--tx:annotation-driven />
 
-
-    <tx:annotation-driven />
-
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven/-->
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
-    <context:component-scan  base-package="org.savam" />
+    <context:component-scan  base-package="org.savam.newsmanager" />
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/" />
@@ -31,7 +29,7 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
           destroy-method="close">
         <property name="driverClassName" value="org.h2.Driver" />
         <property name="url" value="jdbc:h2:tcp://localhost:9092/default" />
-        <property name="username" value="su" />
+        <property name="username" value="sa" />
         <property name="password" value="" />
     </bean>
 
@@ -39,12 +37,7 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
           class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <property name="packagesToScan" value="org.savam.newsmanager" />
-        <!--property name="annotatedClasses">
-            <list>
-                <value>org.savam.newsmanager.model.Article</value>
-                <value>org.savam.newsmanager.model.Category</value>
-            </list>
-        </property-->
+
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
@@ -57,17 +50,9 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
         </property>
     </bean>
 
-    <!--bean
-            class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"
-            id="PersistenceExceptionTranslator" /-->
-
     <bean id="transactionManager"
           class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-
-    <!--bean id="articleDAO" class="org.savam.newsmanager.dao.ArticleDAOImpl">
-        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
-    </bean-->
 
 </beans>

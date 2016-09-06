@@ -7,9 +7,8 @@ import java.sql.Date;
 @Table(name="ARTICLE")
 public class Article {
 
-
     private int article_id;
-    private char[] content;
+    private String content;
     @Temporal(TemporalType.DATE)
     private Date publication_date;
     private Category category;
@@ -26,11 +25,11 @@ public class Article {
     }
 
     @Column(name = "content")
-    public char[] getContent() {
+    public String getContent() {
         return content;
     }
 
-    public void setContent(char[] content) {
+    public void setContent(String content) {
         this.content = content;
     }
 
@@ -44,7 +43,7 @@ public class Article {
     }
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "category")
     public Category getCategory() {
         return category;
     }
@@ -52,4 +51,6 @@ public class Article {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+
 }

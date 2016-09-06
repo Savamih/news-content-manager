@@ -22,8 +22,8 @@ public class MainController {
 
     @RequestMapping(value = "/news", method = RequestMethod.GET)
     public String listArticles(Model model){
-        model.addAttribute("article", new Article());
+        //model.addAttribute("article", new Article());
         model.addAttribute("listArticles", this.newsService.listArticles());
-        return "page";
+        return "news";
     }
 }

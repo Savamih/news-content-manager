@@ -1,10 +1,7 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Savam
-  Date: 05.09.2016
-  Time: 7:17
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ page session="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -22,18 +19,20 @@
     <table class="tg">
         <tr>
             <th width="80">Article ID</th>
-            <th width="120">Article Date</th>
             <th width="120">Content</th>
+            <th width="120">Article Date</th>
+            <th width="120">Article Category</th>
             <th width="60">Edit</th>
             <th width="60">Delete</th>
         </tr>
-        <c:forEach items="${listPersons}" var="person">
+        <c:forEach items="${listArticles}" var="article">
             <tr>
-                <td>${article.id}</td>
-                <td>${article.publication_date}</td>
+                <td>${article.article_id}</td>
                 <td>${article.content}</td>
-                <td><a href="<c:url value='/edit/${article.id}' />" >Edit</a></td>
-                <td><a href="<c:url value='/remove/${article.id}' />" >Delete</a></td>
+                <td>${article.publication_date}</td>
+                <td>${article.category.name}</td>
+                <td><a href="<c:url value='/edit/${article.article_id}' />" >Edit</a></td>
+                <td><a href="<c:url value='/remove/${article.article_id}' />" >Delete</a></td>
             </tr>
         </c:forEach>
     </table>
