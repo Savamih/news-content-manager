@@ -31,11 +31,12 @@
                 <td>${article.content}</td>
                 <td>${article.publication_date}</td>
                 <td>${article.category.name}</td>
-                <td><a href="<c:url value='/edit/${article.article_id}' />" >Edit</a></td>
-                <td><a href="<c:url value='/remove/${article.article_id}' />" >Delete</a></td>
+                <td><a href="<c:url value='/news/update/${article.article_id}' />" >Edit</a></td>
+                <td><a href="<c:url value='/news/remove/${article.article_id}' />" >Delete</a></td>
             </tr>
         </c:forEach>
     </table>
 </c:if>
+<a href="<c:url value='/news/add.html' />">Add News</a>
 </body>
 </html>

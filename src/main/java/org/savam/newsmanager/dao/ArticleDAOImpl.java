@@ -14,8 +14,8 @@ import java.util.List;
 @Repository
 public class ArticleDAOImpl implements ArticleDAO {
 
-   // private static final Logger logger =
-    //        LoggerFactory.getLogger(ArticleDAOImpl.class);
+    private static final Logger logger =
+            LoggerFactory.getLogger(ArticleDAOImpl.class);
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -28,30 +28,36 @@ public class ArticleDAOImpl implements ArticleDAO {
 
         Session session = this.sessionFactory.getCurrentSession();
         session.persist(article);
+        logger.info("Person saved successfully, Person Details="+article);
 
     }
 
     public void updateArticle(Article article) {
-
+        Session session = this.sessionFactory.getCurrentSession();
+        session.update(article);
+        logger.info("Person updated successfully, Person Details="+article);
     }
 
     public void removeArticle(int id) {
-
+        Session session = this.sessionFactory.getCurrentSession();
+        Article article = (Article) session.load(Article.class, new Integer(id));
+        if(null != article){
+            session.delete(article);
+        }
+        logger.info("Person deleted successfully, person details="+article);
     }
 
     @SuppressWarnings("unchecked")
     public List<Article> listArticles() {
         Session session = this.sessionFactory.getCurrentSession();
         List<Article> articlesList = session.createQuery("from Article").list();
-        for(Article a : articlesList){
-            System.out.println(a.getCategory());
-            System.out.println(a.getContent());
-            //logger.info("Article "+ a);
-        }
         return articlesList;
     }
 
     public Article getArticleById(int id) {
-        return null;
+        Session session = this.sessionFactory.getCurrentSession();
+        Article article = (Article) session.load(Article.class, new Integer(id));
+        logger.info("Person loaded successfully, Person details="+article);
+        return article;
     }
 }

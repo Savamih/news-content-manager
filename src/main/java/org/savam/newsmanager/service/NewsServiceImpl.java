@@ -18,7 +18,7 @@ public class NewsServiceImpl implements NewsService {
         this.articleDAO = articleDAO;
     }
 
-
+    @Transactional
     public void addArticle(Article article) {
         this.articleDAO.addArticle(article);
     }
@@ -26,6 +26,25 @@ public class NewsServiceImpl implements NewsService {
     @Transactional
     public List<Article> listArticles() {
         return this.articleDAO.listArticles();
+    }
+
+    @Override
+    @Transactional
+    public void updateArticle(Article article) {
+         articleDAO.updateArticle(article);
+    }
+
+    @Override
+    @Transactional
+    public void removeArticle(int id) {
+        articleDAO.removeArticle(id);
+
+    }
+
+    @Override
+    @Transactional
+    public Article getArticleById(int id) {
+        return articleDAO.getArticleById(id);
     }
 
 }
