@@ -8,14 +8,13 @@ import java.util.Set;
 @Table(name="CATEGORY")
 public class Category {
 
-
     private int category_id;
     private String name;
     private Set<Article> articles;
 
     @Id
     @Column(name = "category_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getCategory_id() {
         return category_id;
     }
@@ -33,7 +32,7 @@ public class Category {
         this.name = name;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
     public Set<Article> getArticles() {
         return articles;
     }

@@ -37,6 +37,6 @@
         </c:forEach>
     </table>
 </c:if>
-<a href="<c:url value='/news/add.html' />">Add News</a>
+<a href="<c:url value='/news/add' />">Add News</a>
 </body>
 </html>

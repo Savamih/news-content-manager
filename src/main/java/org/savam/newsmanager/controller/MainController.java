@@ -34,7 +34,7 @@ public class MainController {
 
     @RequestMapping(value = "/news/update/{id}")
     public String updateNews(@PathVariable("id") int id, Model model){
-        model.addAttribute("article", this.newsService.getArticleById(id));
+        model.addAttribute("article", newsService.getArticleById(id));
         return "news_add";
     }
 
@@ -49,7 +49,7 @@ public class MainController {
     }
 
     @RequestMapping(value = "/news/remove/{id}")
-    public String deleteNews(@PathVariable("id") int id){
+    public String removeArticle(@PathVariable("id") int id){
         this.newsService.removeArticle(id);
         return "redirect:/news";
     }

@@ -28,14 +28,13 @@ public class ArticleDAOImpl implements ArticleDAO {
 
         Session session = this.sessionFactory.getCurrentSession();
         session.persist(article);
-        logger.info("Person saved successfully, Person Details="+article);
-
+        logger.info("Article saved successfully, Article Details="+article);
     }
 
     public void updateArticle(Article article) {
         Session session = this.sessionFactory.getCurrentSession();
         session.update(article);
-        logger.info("Person updated successfully, Person Details="+article);
+        logger.info("Article updated successfully, Article Details="+article);
     }
 
     public void removeArticle(int id) {
@@ -44,20 +43,23 @@ public class ArticleDAOImpl implements ArticleDAO {
         if(null != article){
             session.delete(article);
         }
-        logger.info("Person deleted successfully, person details="+article);
+        logger.info("Article deleted successfully, article details="+article);
     }
 
     @SuppressWarnings("unchecked")
     public List<Article> listArticles() {
         Session session = this.sessionFactory.getCurrentSession();
         List<Article> articlesList = session.createQuery("from Article").list();
+        for(Article a: articlesList){
+            logger.info("Article list successfully, article deatails="+a);
+        }
         return articlesList;
     }
 
     public Article getArticleById(int id) {
         Session session = this.sessionFactory.getCurrentSession();
         Article article = (Article) session.load(Article.class, new Integer(id));
-        logger.info("Person loaded successfully, Person details="+article);
+        logger.info("Article loaded successfully, Article details="+article);
         return article;
     }
 }

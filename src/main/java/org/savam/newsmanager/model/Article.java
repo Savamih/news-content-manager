@@ -9,13 +9,13 @@ public class Article {
 
     private int article_id;
     private String content;
-    @Temporal(TemporalType.DATE)
-    private Date publication_date;
+    //@Temporal(TemporalType.DATE)
+    private String publication_date;
     private Category category;
 
     @Id
     @Column(name = "article_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getArticle_id() {
         return article_id;
     }
@@ -34,15 +34,15 @@ public class Article {
     }
 
     @Column(name = "publication_date")
-    public Date getPublication_date() {
+    public String getPublication_date() {
         return publication_date;
     }
 
-    public void setPublication_date(Date publication_date) {
+    public void setPublication_date(String publication_date) {
         this.publication_date = publication_date;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "category")
     public Category getCategory() {
         return category;

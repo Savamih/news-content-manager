@@ -10,10 +10,16 @@
 <h1>
     Add News
 </h1>
-<c:url var="postArticle" value="/news/add_update.html"></c:url>
+<c:url var="postArticle" value="/news/add_update"></c:url>
 
 <form:form action="${postArticle}" commandName="article">
+
     <table>
+        <tr>
+            <td>
+                <form:hidden path="article_id" />
+            </td>
+        </tr>
         <tr>
             <td>
                 <form:label path="content">
@@ -36,12 +42,12 @@
         </tr>
         <tr>
             <td>
-                <form:label path="category">
+                <form:label path="category.name">
                     <spring:message text="Category"/>
                 </form:label>
             </td>
             <td>
-                <form:input path="category" />
+                <form:input path="category.name" />
             </td>
         </tr>
         <tr>
