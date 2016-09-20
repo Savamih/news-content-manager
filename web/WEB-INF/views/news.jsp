@@ -30,9 +30,14 @@
                 <td>${article.article_id}</td>
                 <td>${article.content}</td>
                 <td>${article.publication_date}</td>
-                <td>${article.category.name}</td>
+                <td>${article.category.category_id}</td>
                 <td><a href="<c:url value='/news/update/${article.article_id}' />" >Edit</a></td>
                 <td><a href="<c:url value='/news/remove/${article.article_id}' />" >Delete</a></td>
+            </tr>
+        </c:forEach>
+        <c:forEach items="${category}" var="cat">
+            <tr>
+                <td>${cat.name}</td>
             </tr>
         </c:forEach>
     </table>

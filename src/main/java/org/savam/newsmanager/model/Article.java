@@ -1,5 +1,8 @@
 package org.savam.newsmanager.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -42,14 +45,15 @@ public class Article {
         this.publication_date = publication_date;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @Fetch(FetchMode.JOIN) //TODO
     @JoinColumn(name = "category")
     public Category getCategory() {
         return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
     }
 
 

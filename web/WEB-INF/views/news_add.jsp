@@ -17,7 +17,7 @@
     <table>
         <tr>
             <td>
-                <form:hidden path="article_id" />
+                <!--form:hidden path="article_id" /-->
             </td>
         </tr>
         <tr>
@@ -40,17 +40,19 @@
                 <form:input path="publication_date" />
             </td>
         </tr>
-        <tr>
-            <td>
-                <form:label path="category.name">
-                    <spring:message text="Category"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="category.name" />
-            </td>
-        </tr>
-        <tr>
+
+
+            <tr>
+                <td>
+                    <form:label path="category.category_id">
+                        <spring:message text="Category"/>
+                    </form:label>
+                </td>
+                <td>
+                    <form:input path="category.category_id" />
+                </td>
+            </tr>
+
         <td colspan="2">
             <c:if test="${!empty article.content}">
                 <input type="submit"

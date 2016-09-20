@@ -10,7 +10,8 @@ public class Category {
 
     private int category_id;
     private String name;
-    private Set<Article> articles;
+    private String status;
+    private List<Article> articles;
 
     @Id
     @Column(name = "category_id")
@@ -23,7 +24,7 @@ public class Category {
         this.category_id = category_id;
     }
 
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     public String getName() {
         return name;
     }
@@ -32,13 +33,22 @@ public class Category {
         this.name = name;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
-    public Set<Article> getArticles() {
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category", cascade = CascadeType.ALL)
+    public List<Article> getArticles() {
         return articles;
     }
 
-    public void setArticles(Set<Article> articles) {
+    public void setArticles(List<Article> articles) {
         this.articles = articles;
+    }
+
+    @Column(name = "status", nullable = true)
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override
